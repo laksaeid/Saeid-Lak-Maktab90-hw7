@@ -25,17 +25,30 @@
   </select>
   </div>
 
+  <div class="radio">
+    <label for="radio">Gender:</label>
+    <div>
+    
+      <input type="radio" name="radio" id="radio">
+      <label for="">man</label>
+      <input type="radio" name="radio" id="radio">
+      <label for="">female</label>
+      <input type="radio" name="radio" id="radio">
+      <label for="">other</label>
+    </div>
+  </div>
 
 <label for="phone">phone:</label>
-<input type="tel" name="phone" id="phone">
-<input type="tel" name="phone" id="phone" placeholder="phone no">
+<input type="tel" name="phone" id="phone" value="+98">
+<input type="tel" maxlength="7" name="phone" id="phone" placeholder="phone no">
 
-
-<label for="address">Current Address</label>
-<textarea name="address" id="address" cols="30" rows="10" placeholder="current address"></textarea>
+<div class="texts">
+  <label for="address">Current Address</label>
+  <textarea name="address" id="address" cols="30" rows="10" placeholder="current address"></textarea>
+</div>
 
 <label for="email" class="email">Email</label>
-<input type="email" name="email" id="email" placeholder="Enter Email">
+<input type="text" name="email" id="email" placeholder="Enter Email">
 
 
 <label for="pass" class="pass">Password</label>
