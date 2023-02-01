@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Music Player</title>
+  <style>
+    #player {
+      display: none;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      margin: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    
+    #volumeControl {
+      width: 200px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <audio id="player" src="Sina SaE - Engar.mp3"></audio>
+  <br>
+  <button id="playBtn">Play</button>
+  <button id="pauseBtn">Pause</button>
+  <button id="stopBtn">Stop</button>
+  <button id="prevBtn">Prev</button>
+  <button id="nextBtn">Next</button>
+  <br><br>
+  <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+  
+  <script>
+    const player = document.getElementById("player");
+    const playBtn = document.getElementById("playBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const volumeControl = document.getElementById("volumeControl");
+    let currentTrack = 1;
+    const tracks = [
+      "Poori - tttpttt.mp3",
+      "Sina SaE - Engar.mp3",
+      "Sogand - Khodaya.mp3"
+    ];
+    
+    function playTrack(track) {
+      player.src = tracks[track];
+      player.play();
+    }
+    
+    playBtn.addEventListener("click", function() {
+      player.play();
+    });
+    
+    pauseBtn.addEventListener("click", function() {
+      player.pause();
+    });
+    
+    stopBtn.addEventListener("click", function() {
+      player.pause();
+      player.currentTime = 0;
+    });
+    
+    prevBtn.addEventListener("click", function() {
+      currentTrack--;
+      if (currentTrack < 0) {
+        currentTrack = tracks.length - 1;
+      }
+      playTrack(currentTrack);
+    });
+    
+    nextBtn.addEventListener("click", function() {
+      currentTrack++;
+      if (currentTrack >= tracks.length) {
+        currentTrack = 0;
+      }
+      playTrack(currentTrack);
+    });
+    
+    volumeControl.addEventListener("input", function() {
+      player.volume = this.value;
+    });
+  </script>
+</body>
+</html>
