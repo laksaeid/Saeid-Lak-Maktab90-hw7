@@ -31,18 +31,6 @@ function checkValidations (e) {
   courseValidator(course, course.value) && validationCounter++;
  validationCounter === 9 && console.log(`firstName:${firstName.value}\nlastName:${lastName.value}\nmidName:${middleName.value}\ncourse:${course.value}\nemail:${email.value}\nphoneNumber:${phone.value}\npassword:${password.value}\ngender:${genderValidator(gender)}\naddress:${address.value}`); 
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 function courseValidator(element, input) {
@@ -56,7 +44,7 @@ function courseValidator(element, input) {
 function genderValidator(elements) {
   let gender1;
   elements.forEach(element => { 
-    if (element.checked === true) {
+    if (!element.checked === true) {
       gender1 = element.nextElementSibling.innerHTML;
     }
   })
