@@ -6,14 +6,17 @@ const lastName = document.getElementById('lName');
 const middleName = document.getElementById('mName');
 const password = document.getElementById('pass');
 const retype = document.getElementById('retype');
-
+const phone = document.getElementById('phone1');
+const gender = document.querySelectorAll('#radio');
+const course = document.querySelector('#course');
+const address = document.querySelector('#address');
 form.addEventListener('submit', checkValidations);
 
 function checkValidations (e) {
   e.preventDefault();
   const errors = document.querySelectorAll('.error');
   errors.forEach(msg => {
-  msg.remove();
+    msg.remove();
   })
 
   let validationCounter = 0;
@@ -23,9 +26,10 @@ function checkValidations (e) {
   NameValidator(middleName, middleName.value) && validationCounter++;
   passwordValidator(password, password.value) && validationCounter++;
   retypeValidator(retype, retype.value , password.value) && validationCounter++;
-  
- validationCounter === 6 && console.log(`${firstName.value}\n${lastName.value}\n${middleName.value}\n${email.value}`); 
-
+  phoneVallidator(phone, phone.value) && validationCounter++;
+  genderValidator(gender) && validationCounter++;
+  courseValidator(course, course.value) && validationCounter++;
+ validationCounter === 9 && console.log(`firstName:${firstName.value}\nlastName:${lastName.value}\nmidName:${middleName.value}\ncourse:${course.value}\nemail:${email.value}\nphoneNumber:${phone.value}\npassword:${password.value}\ngender:${genderValidator(gender)}\naddress:${address.value}`); 
 
 
 
@@ -41,7 +45,32 @@ function checkValidations (e) {
 
 }
 
+function courseValidator(element, input) {
+  if (input === "choose course") {
+    element.parentElement.after(errorMsg('please select your course'));
+  } else {
+    return true;
+  }
+}
 
+function genderValidator(elements) {
+  let gender1;
+  elements.forEach(element => { 
+    if (element.checked === true) {
+      gender1 = element.nextElementSibling.innerHTML;
+    }
+  })
+  return gender1;
+}
+
+function phoneVallidator(element, input) {
+  let regex=/^[0-9]+$/;
+  if ( !input.match(regex) || input.length < 10  ) {
+    element.after(errorMsg('phone number must be at least 10 characters and just numbers'))
+  } else {
+    return true
+  }
+}
 
 function passwordValidator(element, input) {
   if (input.search(/[0-9]/) || input.search(/[a-z]/) < 0 || input.length < 6) {

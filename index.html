@@ -21,14 +21,16 @@
 <div class="select">
   <label for="course">course:</label>
   <select name="course" id="course" >
-    <option>course</option>
+    <option selected disabled hidden>choose course</option>
+    <option value="riazi">riazi</option>
+    <option value="fizik">fizik</option>
+    <option value="dini">dini</option>
   </select>
   </div>
 
   <div class="radio">
     <label for="radio">Gender:</label>
     <div>
-    
       <input type="radio" name="radio" id="radio">
       <label for="">man</label>
       <input type="radio" name="radio" id="radio">
@@ -40,7 +42,7 @@
 
 <label for="phone">phone:</label>
 <input type="tel" name="phone" id="phone" value="+98">
-<input type="tel" maxlength="7" name="phone" id="phone" placeholder="phone no">
+<input type="tel" maxlength="10" name="phone" id="phone1" placeholder="phone no">
 
 <div class="texts">
   <label for="address">Current Address</label>
