@@ -29,7 +29,21 @@ function checkValidations (e) {
   phoneVallidator(phone, phone.value) && validationCounter++;
   genderValidator(gender) && validationCounter++;
   courseValidator(course, course.value) && validationCounter++;
- validationCounter === 9 && console.log(`firstName:${firstName.value}\nlastName:${lastName.value}\nmidName:${middleName.value}\ncourse:${course.value}\nemail:${email.value}\nphoneNumber:${phone.value}\npassword:${password.value}\ngender:${genderValidator(gender)}\naddress:${address.value}`); 
+
+  let user;
+  if (validationCounter === 9) {
+    user = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      middleName: middleName.value,
+      email: email.value,
+      phoneNumber: phone.value,
+      password: password.value,
+      gender: genderValidator(gender),
+      address: address.value
+    }
+  }
+  console.log(user);
 
 }
 
@@ -49,7 +63,7 @@ function genderValidator(elements) {
   if (!gender1) {
     elements[0].parentElement.after(errorMsg('phone number must be at least 10 characters and just numbers'))
   } else {
-    return true
+    return gender1.value;
   }
   // if (!gender1) {
   //   gender[0].
