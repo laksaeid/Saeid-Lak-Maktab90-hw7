@@ -8,7 +8,7 @@ let keys = map.keys();
 
 
 
-//becouse keys in not array and we cannot push them into the array
+//becouse keys(map iterator) in not array and we cannot push them into the array
 let newKeys = Array.from(keys);
 newKeys.push("more");
 console.log(newKeys);
