@@ -42,13 +42,18 @@ function courseValidator(element, input) {
 }
 
 function genderValidator(elements) {
-  let gender1;
-  elements.forEach(element => { 
-    if (!element.checked === true) {
-      gender1 = element.nextElementSibling.innerHTML;
-    }
+
+  let gender1 = Array.from(elements).find(element => { 
+   return element.checked === true
   })
-  return gender1;
+  if (!gender1) {
+    elements[0].parentElement.after(errorMsg('phone number must be at least 10 characters and just numbers'))
+  } else {
+    return true
+  }
+  // if (!gender1) {
+  //   gender[0].
+  // }
 }
 
 function phoneVallidator(element, input) {
